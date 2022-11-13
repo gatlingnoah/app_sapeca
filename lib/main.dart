@@ -35,6 +35,7 @@ class AppSapeca extends StatelessWidget {
             ),
             title: const Text('SAPECA'),
             centerTitle: true,
+            backgroundColor: Color.fromARGB(255, 65, 168, 69),
           ),
           body: TabBarView(
             children: <Widget>[Calculo(), Instrucoes(), Sobre()],
