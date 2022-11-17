@@ -9,6 +9,12 @@ String stringAutores = 'Prof. Dr. Rouverson Pereira da Silva \n'
     'E-mail: rouverson@unesp.br \n'
     'Celular: (16) 99993-4575 \n';
 
+String stringRealizacao = 'Inserir link do LAMMA e do UNIPAM nos logos. \n'
+    'Inserir novo botão “Sobre o SAPECA”. \n'
+    'O SAPECA foi desenvolvido com o objetivo de auxiliar o produtor, permitindo o monitoramento das perdas na colheita de amendoim. \n'
+    'Por ser uma estimativa, os valores calculados fornecem apenas uma aproximação das perdas, uma vez que não são consideradas condições particulares de cada lavoura. '
+    'Os resultados no entanto, permitem que o produtor possa obter um melhor gerenciamento da sua colheita, visando melhor retorno econômico.';
+
 class Sobre extends StatefulWidget {
   @override
   _SobreState createState() => _SobreState();
@@ -57,7 +63,19 @@ class _SobreState extends State<Sobre> {
             style: TextStyle(fontSize: 16),
           ),
           contentPadding: EdgeInsets.all(16),
-        )
+        ),
+        // Lista dos Autores
+        ListTile(
+          title: Text(
+            'Realização',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(
+            stringRealizacao,
+            style: TextStyle(fontSize: 16),
+          ),
+          contentPadding: EdgeInsets.all(8),
+        ),
       ],
     ));
   }
