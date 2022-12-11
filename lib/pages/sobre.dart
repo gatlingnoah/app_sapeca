@@ -10,9 +10,9 @@ String stringAutores = 'Prof. Dr. Rouverson Pereira da Silva \n'
     'Celular: (16) 99993-4575 \n';
 
 String stringRealizacao = 'Inserir link do LAMMA e do UNIPAM nos logos. \n'
-    'Inserir novo botão “Sobre o SAPECA”. \n'
+    '“Sobre o SAPECA”. \n'
     'O SAPECA foi desenvolvido com o objetivo de auxiliar o produtor, permitindo o monitoramento das perdas na colheita de amendoim. \n'
-    'Por ser uma estimativa, os valores calculados fornecem apenas uma aproximação das perdas, uma vez que não são consideradas condições particulares de cada lavoura. '
+    'Por ser uma estimativa, os valores calculados fornecem apenas uma aproximação das perdas, uma vez que não são consideradas condições particulares de cada lavoura. \n'
     'Os resultados no entanto, permitem que o produtor possa obter um melhor gerenciamento da sua colheita, visando melhor retorno econômico.';
 
 class Sobre extends StatefulWidget {
@@ -30,9 +30,36 @@ class _SobreState extends State<Sobre> {
         Center(
           child: const Text.rich(
             TextSpan(
-              text: 'Sistema de Avaliação de Perdas na Colheita de Amendoim – ',
-              style: TextStyle(fontSize: 16), // default text style
+              text: '',
+              style: TextStyle(
+                fontSize: 16,
+              ), // default text style
               children: <TextSpan>[
+                TextSpan(
+                    text: 'S', style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(
+                  text: 'istema de ',
+                ),
+                TextSpan(
+                    text: 'A', style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(
+                  text: 'valiação de ',
+                ),
+                TextSpan(
+                    text: 'P', style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(
+                  text: 'erdas na ',
+                ),
+                TextSpan(
+                    text: 'C', style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(
+                  text: 'olheita de ',
+                ),
+                TextSpan(
+                    text: 'A', style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(
+                  text: 'mendoim – ',
+                ),
                 TextSpan(
                     text: 'SAPECA',
                     style: TextStyle(fontWeight: FontWeight.bold)),
@@ -50,7 +77,7 @@ class _SobreState extends State<Sobre> {
             stringAutores,
             style: TextStyle(fontSize: 16),
           ),
-          contentPadding: EdgeInsets.all(8),
+          contentPadding: EdgeInsets.all(16),
         ),
         // Lista dos Autores
         ListTile(
@@ -74,7 +101,7 @@ class _SobreState extends State<Sobre> {
             stringRealizacao,
             style: TextStyle(fontSize: 16),
           ),
-          contentPadding: EdgeInsets.all(8),
+          contentPadding: EdgeInsets.all(16),
         ),
       ],
     ));

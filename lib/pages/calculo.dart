@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:app_sapeca/pages/equacao.dart';
 import 'package:flutter/material.dart';
 
 const List<String> variedade = <String>[
@@ -13,13 +14,27 @@ const List<String> operacoes = <String>['Arranquio', 'Recolhimento'];
 const List<String> perdas = <String>['Visível', 'Invisível'];
 const List<String> solo = <String>['Arenoso', 'Argiloso'];
 
+String variedadeValue = variedade.first;
+String operacoesValue = operacoes.first;
+String soloValue = solo.first;
+String perdasValue = perdas.first;
+
 class Calculo extends StatefulWidget {
   @override
   _CalculoState createState() => _CalculoState();
 }
 
 class _CalculoState extends State<Calculo> {
-  @override
+  final dadosController = TextEditingController();
+  String textChange = '';
+
+  void calling() {
+    setState(() {
+      textChange = Equacao().calculing(variedadeValue, operacoesValue,
+          soloValue, perdasValue, dadosController.text);
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Scrollbar(
@@ -33,10 +48,30 @@ class _CalculoState extends State<Calculo> {
                   const DropdownOperacoes(),
                   const DropdownPerdas(),
                   const DropdownSolo(),
-                  TextFormField(
+
+                  const SizedBox(height: 30), // size pra distancia
+
+                  TextField(
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        icon: Icon(Icons.dashboard_customize_sharp),
+                        hintText: 'Quantidade de Vagens contadas'),
+                    controller: dadosController,
+                  ),
+
+                  RaisedButton(
+                    onPressed: () {
+                      calling();
+                    },
+                    child: const Text('CALCULAR'),
+                  ),
+
+                  const SizedBox(height: 30),
+
+                  Text(
+                    textChange,
+                    style: TextStyle(fontSize: 16),
                     textAlign: TextAlign.center,
-                    decoration:
-                        InputDecoration(labelText: 'Perdas por hectare:'),
                   ),
                 ],
               ),
@@ -57,8 +92,6 @@ class DropdownVariedade extends StatefulWidget {
 }
 
 class _DropdownVariedadeState extends State<DropdownVariedade> {
-  String variedadeValue = variedade.first;
-
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
@@ -90,8 +123,6 @@ class DropdownOperacoes extends StatefulWidget {
 }
 
 class _DropdownOperacoesState extends State<DropdownOperacoes> {
-  String operacoesValue = operacoes.first;
-
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
@@ -123,8 +154,6 @@ class DropdownPerdas extends StatefulWidget {
 }
 
 class _DropdownPerdasState extends State<DropdownPerdas> {
-  String perdasValue = perdas.first;
-
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
@@ -156,8 +185,6 @@ class DropdownSolo extends StatefulWidget {
 }
 
 class _DropdownSoloState extends State<DropdownSolo> {
-  String soloValue = solo.first;
-
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
